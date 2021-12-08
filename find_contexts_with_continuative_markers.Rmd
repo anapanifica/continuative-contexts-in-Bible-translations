@@ -1,0 +1,167 @@
+---
+title: "Looking for continuative markers in potential continuative contexts"
+---
+
+```{r}
+library(tidyverse)
+library(lingtypology)
+```
+
+load the data
+
+```{r}
+df <- read.csv("sample.csv")
+df %>%
+  filter(included != "no") -> df1
+df1
+```
+choose markers only in those languages which have translations of the Gospel of Luke (in R. Östling's corpus)
+markers which I did not manage to find in translations are also not included
+
+```{r}
+df1 %>%
+  filter(form_in_Bible != "(not found)" & 
+           form_in_Bible != "(no Bible)" & 
+           form_in_Bible != "(Bible not from corpus)") %>%
+  select ("id_number", "family", "iso", "language", "form", "form_in_Bible", "Bible") -> df2
+df2
+```
+
+create a list of commands which run find_instances.py for each of the markers
+find_instances.py can be found here: https://github.com/robertostling/parallel-tools
+
+
+```{r}
+file.create("commands_for_searching_continuative_markers.sh")
+for (x in df2$form_in_Bible) {
+  command = paste("python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e '", x, "' /Users/apanova/Downloads/corpus/", df2$Bible[df2$form_in_Bible == x], " > results/", df2$iso[df2$form_in_Bible == x], "_", df2$id_number[df2$form_in_Bible == x], ".txt", sep = "", collapse = NULL)
+  write(command,file="commands_for_searching_continuative_markers.sh",append=TRUE)
+}
+```
+
+#######
+
+HERE YOU NEED TO DO THE FOLLOWING:
+
+COPY COMMANDS FROM SH FILE AND RUN IT FROM BASH
+SOME COMMANDS PRODUCE EMPTY FILES IN THE RESULTS DIRECTORY (I DO NOT KNOW WHY)
+FIND THEM AND RUN COMMANDS FOR PRODUCING THESE FILES SEPARATELY ONE BY ONE (THIS WAY THEY USUALLY WORK)
+
+#######
+
+get the full list of files and save it
+
+```{r}
+try(system("ls results > list_of_files_with_results.txt", ignore.stderr = TRUE))
+```
+
+```{r}
+list_of_files <- read.csv("list_of_files_with_results.txt", header = FALSE)
+list_of_files
+```
+
+run the python script which selects lines with results for the Gospel of Luke and saves numbers of verses with continuative markers in a csv
+
+```{r}
+try(system("python3 select_numbers_of_verses_with_continuatives_in_Luke.py"))
+```
+
+load csv
+
+```{r}
+contexts_with_continuatives <- read.csv("contexts_with_continuatives.csv", header = FALSE, sep = "\t")
+contexts_with_continuatives
+```
+transform the data into a more user-friendly format
+
+```{r}
+contexts_with_continuatives %>%
+  separate_rows(V2, sep = ", ") %>%
+  filter(V2 != "") %>%
+  mutate(tf = 1) %>%
+  spread(V2, tf, fill = 0) %>%
+  separate(V1, c('iso_code', 'id_number')) -> contexts_with_continuatives_table
+contexts_with_continuatives_table
+```
+save the data on contexts with continuative markers
+
+```{r}
+write.csv(contexts_with_continuatives_table,file="contexts_with_continuatives_table.csv")
+```
+
+create a variable with the list of potentially continuative contexts in the Gospel of Luke (identified based on the manual semantic analysis of the text)
+
+
+```{r}
+potentially_continuative_contexts = c("42008049", "42009034", "42009042", "42009043", "42012058", "42014022", "42014032", "42015020", "42018022", "42019033", "42022047", "42022060", "42024006", "42024041", "42024044", "42024051")
+```
+
+add data on occurrences of continuative markers in Abaza, Lezgian and Gban translations of the Gospel of Luke (which are not from the corpus)
+
+```{r}
+contexts_with_continuatives_table %>%
+  select("iso_code", "id_number", potentially_continuative_contexts) %>%
+  add_row(iso_code ="abq", "id_number" = "25", "42008049" = 0, 
+          "42009034" = 0, "42009042" = 0, "42009043" = 0, "42012058" = 0, 
+          "42014022" = 1, "42014032" = 0, "42015020" = 0, "42018022" = 1, 
+          "42019033" = 0, "42022047" = 0, "42022060" = 0, "42024006" = 0, 
+          "42024041" = 0, "42024044" = 0, "42024051" = 0) %>%
+  add_row(iso_code ="abq", "id_number" = "24", "42008049" = 1, 
+          "42009034" = 1, "42009042" = 0, "42009043" = 0, "42012058" = 1, 
+          "42014022" = 0, "42014032" = 1, "42015020" = 1, "42018022" = 0, 
+          "42019033" = 0, "42022047" = 1, "42022060" = 1, "42024006" = 1, 
+          "42024041" = 0, "42024044" = 1, "42024051" = 0) %>%
+  add_row(iso_code ="lez", "id_number" = "15", "42008049" = 1, 
+          "42009034" = 0, "42009042" = 0, "42009043" = 1, "42012058" = 1, 
+          "42014022" = 1, "42014032" = 1, "42015020" = 1, "42018022" = 0, 
+          "42019033" = 0, "42022047" = 1, "42022060" = 0, "42024006" = 0, 
+          "42024041" = 0, "42024044" = 1, "42024051" = 0) %>%
+  add_row(iso_code ="lez", "id_number" = "16", "42008049" = 0, 
+          "42009034" = 0, "42009042" = 0, "42009043" = 0, "42012058" = 0, 
+          "42014022" = 0, "42014032" = 0, "42015020" = 1, "42018022" = 0, 
+          "42019033" = 0, "42022047" = 0, "42022060" = 0, "42024006" = 0, 
+          "42024041" = 1, "42024044" = 1, "42024051" = 0) %>%
+  add_row(iso_code ="ggu", "id_number" = "48", "42008049" = 1, 
+          "42009034" = 1, "42009042" = 0, "42009043" = 0, "42012058" = 1, 
+          "42014022" = 0, "42014032" = 0, "42015020" = 1, "42018022" = 0, 
+          "42019033" = 1, "42022047" = 1, "42022060" = 1, "42024006" = 0, 
+          "42024041" = 1, "42024044" = 1, "42024051" = 0) %>%
+  add_row(iso_code ="ggu", "id_number" = "49", "42008049" = 0, 
+          "42009034" = 0, "42009042" = 0, "42009043" = 0, "42012058" = 0, 
+          "42014022" = 0, "42014032" = 0, "42015020" = 0, "42018022" = 0, 
+          "42019033" = 0, "42022047" = 0, "42022060" = 0, "42024006" = 0, 
+          "42024041" = 0, "42024044" = 0, "42024051" = 0) -> continuative_contexts_with_add_langs
+continuative_contexts_with_add_langs
+```
+
+save full data as csv
+
+```{r}
+write.csv(continuative_contexts_with_add_langs,file="continuative_contexts_with_add_langs.csv")
+```
+
+
+calculate the sum of occurrences in the continuative contexts for each continuative marker
+
+```{r}
+continuative_contexts_with_add_langs$sum <- rowSums(continuative_contexts_with_add_langs[,3:18])
+continuative_contexts_with_add_langs %>%
+  select ("iso_code", "id_number", "sum") -> numbers_of_occurrences_in_cnt_contexts
+numbers_of_occurrences_in_cnt_contexts
+```
+
+to draw a map, choose only one marker for each language, i.e. in case of doubling of iso_code, exclude the marker with lower frequency
+
+
+```{r}
+numbers_of_occurrences_in_cnt_contexts %>%
+  subset(id_number != "23" & id_number != "2" & id_number != "67" &
+           id_number != "25" & id_number != "16" & id_number != "49") -> numbers_of_occurrences_in_cnt_contexts_for_map
+numbers_of_occurrences_in_cnt_contexts_for_map
+```
+
+```{r}
+map.feature(languages = lang.iso(numbers_of_occurrences_in_cnt_contexts_for_map$iso_code),
+            features = as.numeric(numbers_of_occurrences_in_cnt_contexts_for_map$sum))
+```
+

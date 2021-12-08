@@ -1,0 +1,36 @@
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' todavía ' /Users/apanova/Downloads/corpus/spa-x-bible-nuevointernacional.txt > results/spa_1.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' aún ' /Users/apanova/Downloads/corpus/spa-x-bible-nuevointernacional.txt > results/spa_2.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' अभी ' /Users/apanova/Downloads/corpus/hin-x-bible-newworld.txt > results/hin_5.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' ยัง' /Users/apanova/Downloads/corpus/tha-x-bible-newworld.txt > results/tha_10.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' இன்னும் ' /Users/apanova/Downloads/corpus/tam-x-bible-newworld.txt > results/tam_11.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' vielä ' /Users/apanova/Downloads/corpus/fin-x-bible-newworld.txt > results/fin_12.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' daha ' /Users/apanova/Downloads/corpus/tur-x-bible-newworld.txt > results/tur_13.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' tseem ' /Users/apanova/Downloads/corpus/hnj-x-bible-standard.txt > results/hnj_14.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' まだ ' /Users/apanova/Downloads/corpus/jpn-x-bible-newworld.txt > results/jpn_18.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' ჯერ ' /Users/apanova/Downloads/corpus/kat-x-bible-revised.txt > results/kat_22.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' კვლავ ' /Users/apanova/Downloads/corpus/kat-x-bible-revised.txt > results/kat_23.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' 아직 ' /Users/apanova/Downloads/corpus/kor-x-bible-newworld2014.txt > results/kor_30.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' a?ngbâ ' /Users/apanova/Downloads/corpus/sag-x-bible-newworld.txt > results/sag_36.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' cãa ' /Users/apanova/Downloads/corpus/dgi-x-bible.txt > results/dgi_39.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' akāli ' /Users/apanova/Downloads/corpus/nyy-x-bible.txt > results/nyy_40.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' ⲈⲦⲒ ' /Users/apanova/Downloads/corpus/cop-x-bible-sahidic.txt > results/cop_50.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' olu ' /Users/apanova/Downloads/corpus/mhi-x-bible.txt > results/mhi_51.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' ru ' /Users/apanova/Downloads/corpus/zai-x-bible.txt > results/zai_66.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' yanna ' /Users/apanova/Downloads/corpus/zai-x-bible.txt > results/zai_67.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' tʼahdii ' /Users/apanova/Downloads/corpus/nav-x-bible.txt > results/nav_72.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' tʼah ' /Users/apanova/Downloads/corpus/nav-x-bible.txt > results/nav_73.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' láayliʼ ' /Users/apanova/Downloads/corpus/yua-x-bible-newworld.txt > results/yua_74.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e 'nam ' /Users/apanova/Downloads/corpus/poi-x-bible.txt > results/poi_77.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' [cC]ali ' /Users/apanova/Downloads/corpus/esu-x-bible.txt > results/esu_81.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e 'caʼ  ' /Users/apanova/Downloads/corpus/tee-x-bible.txt > results/tee_82.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' asi ' /Users/apanova/Downloads/corpus/chr-x-bible.txt > results/chr_84.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' gueteri ' /Users/apanova/Downloads/corpus/gug-x-bible-newworld.txt > results/gug_94.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' noro ' /Users/apanova/Downloads/corpus/car-x-bible.txt > results/car_98.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' zahadu ' /Users/apanova/Downloads/corpus/xav-x-bible.txt > results/xav_100.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' nia ' /Users/apanova/Downloads/corpus/huu-x-bible.txt > results/huu_103.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' jôjjeclay ' /Users/apanova/Downloads/corpus/cag-x-bible.txt > results/cag_104.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' [pP]etu ' /Users/apanova/Downloads/corpus/arn-x-bible.txt > results/arn_115.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' trabia ' /Users/apanova/Downloads/corpus/cha-x-bible-2010.txt > results/cha_148.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' masih ' /Users/apanova/Downloads/corpus/ind-x-bible-newworld.txt > results/ind_150.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' pa ' /Users/apanova/Downloads/corpus/tgl-x-bible-newworld.txt > results/tgl_151.txt
+python3 /Users/apanova/OneDrive/Documents/Continuative/Continuative_Bibles/parallel-tools-master/find_instances.py -e ' ros ' /Users/apanova/Downloads/corpus/mtj-x-bible.txt > results/mtj_170.txt
